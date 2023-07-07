@@ -1,11 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    
+    <div class="wrapper">
+        <div class="navbar">
+
+            <div class="projectname">Sorting Algorithms Visualizer</div>
+
+            <div class="functionality">
+
+                <div class="algoselect">
+                    <label for="Algorithm">Selected Algorithm:</label>
+                    <select name="algorithms" id="algorithms">
+                        <option id="selectionSort">Selection Sort</option>
+                        <option id="bubbleSort">Bubble Sort</option>
+                        <option id="insertionSort">Insertion Sort</option>
+                        <option id="mergeSort">Merge Sort</option>
+                        <option id="quickSort">Quick Sort</option>
+                    </select>
+                </div>
+
+                <div class="sizeselector">
+                    <label for="arraysize">Size of array:</label>
+                    <select name="arraysize" id="arraysize">
+                        <option id="five">5</option>
+                        <option id="ten">10</option>
+                        <option id="twentyfive">25</option>
+                        <option id="fifty">50</option>
+                        <option id="seventyfive">75</option>
+                        <option id="hundred">100</option>
+                    </select>
+                </div>
+
+                <div class="randomizeArray">
+                    <button type="button" id="randomizeArray">Shuffle Array</button>
+                </div>
+
+                <div class="darkmodeSliderContainer">
+                    <label class="switch-darkmode">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- second section - array container,play button,reset button,speed control  -->
+        <div class="secondcontainer">
+            <!-- a array wrapper which will contain the array inside it -->
+            <div class="arraywrapper">
+                <!-- array will be inside this -->
+                <div class="arraycontainer">
+                </div>
+            </div>
+            <!-- functionality will be handled by this container -->
+            <div class="controlBtnsContainer">
+                <div id="reset"></div>
+                <div id="playbtn"></div>
+                <div id="speedcontrol"></div>
+            </div>
+            <!-- indicator -->
+            <div class="indicators">
+                <div id="Unsorted">
+                    <div id="Unsortedbox"></div>
+                    <div>Unsorted</div>
+                </div>
+                <div id="sorted">
+                    <div id="sortedbox"></div>
+                    <div>Sorted</div>
+                </div>
+                <div id="comparing">
+                    <div id="comparingbox"></div>
+                    <div>comparing</div>
+                </div>
+                <div id="swapping">
+                    <div id="swappingbox"></div>
+                    <div>Swapping</div>
+                </div>
+            </div>
+        </div>
+        <!-- Sorting Algorithm Description -->
+        <div class="descriptioncontainer">
+            <!-- 4div for complete theory,time complexity,advantages,disadvantages -->
+            <div id="theory"></div>
+            <div id="time complexity"></div>
+            <div id="advantages"></div>
+            <div id="disadvantages"></div>
+        </div>
+    </div>
+    <div class="main-content"></div>
+    <div class="footer"></div>
+    </div>
+    <script src="mainscript.js"></script>
 </body>
+
 </html>
