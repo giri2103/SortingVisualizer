@@ -10,26 +10,29 @@
 
 <body>
     <div class="wrapper">
+        <div class="projectname">
+            <h1>Sorting Algorithms Visualizer</h1>
+        </div>
         <div class="navbar">
 
-            <div class="projectname">Sorting Algorithms Visualizer</div>
+
 
             <div class="functionality">
 
                 <div class="algoselect">
                     <label for="Algorithm">Selected Algorithm:</label>
-                    <select name="algorithms" id="algorithms">
-                        <option id="selectionSort">Selection Sort</option>
-                        <option id="bubbleSort">Bubble Sort</option>
-                        <option id="insertionSort">Insertion Sort</option>
-                        <option id="mergeSort">Merge Sort</option>
-                        <option id="quickSort">Quick Sort</option>
+                    <select name="algorithmsDropdown" id="algorithmsDropdown">
+                        <option class="selectionSort">Selection Sort</option>
+                        <option class="bubbleSort">Bubble Sort</option>
+                        <option class="insertionSort">Insertion Sort</option>
+                        <option class="mergeSort">Merge Sort</option>
+                        <option class="quickSort">Quick Sort</option>
                     </select>
                 </div>
 
                 <div class="sizeselector">
                     <label for="arraysize">Size of array:</label>
-                    <select name="arraysize" id="arraysize">
+                    <select name="arraysize" id="ArraysizeDropdown">
                         <option id="five">5</option>
                         <option id="ten">10</option>
                         <option id="twentyfive">25</option>
@@ -43,12 +46,7 @@
                     <button type="button" id="randomizeArray">Shuffle Array</button>
                 </div>
 
-                <div class="darkmodeSliderContainer">
-                    <label class="switch-darkmode">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+
 
             </div>
         </div>
@@ -63,42 +61,117 @@
             </div>
             <!-- functionality will be handled by this container -->
             <div class="controlBtnsContainer">
-                <div id="reset"></div>
-                <div id="playbtn"></div>
-                <div id="speedcontrol"></div>
+                <div id="reset"><img id="reset-img" src="assets/resetbutton.svg" alt=""></div>
+                <div id="playbtn"><img id="play-img" src="assets/playbutton.svg" alt=""></div>
+
+                <div class="speedcontrol">
+                    <!-- negative button -->
+                    <button id="decrement" onclick="decrement()">
+                        <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <div id="countercontainer">
+                        <div id="counter">1</div>
+                        <div>x</div>
+                    </div>
+                    <button id="increment" onclick="increment()">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+
             </div>
             <!-- indicator -->
-            <div class="indicators">
-                <div id="Unsorted">
-                    <div id="Unsortedbox"></div>
-                    <div>Unsorted</div>
+            <div class="indicators" id="indicators-container">
+                <div class="indicators" id="Unsorted">
+                    <div id="unsorted-checkbox"></div>
+                    <div id="Unsortedbox">Unsorted</div>
                 </div>
-                <div id="sorted">
-                    <div id="sortedbox"></div>
-                    <div>Sorted</div>
+                <div class="indicators" id="sorted">
+                    <div id="sorted-checkbox"></div>
+                    <div id="sortedbox">Sorted</div>
                 </div>
-                <div id="comparing">
-                    <div id="comparingbox"></div>
-                    <div>comparing</div>
+                <div class="indicators" id="comparing">
+                    <div id="comparing-checkbox"></div>
+                    <div id="comparingbox">Comparing</div>
                 </div>
-                <div id="swapping">
-                    <div id="swappingbox"></div>
-                    <div>Swapping</div>
+                <div class="indicators" id="swapping">
+                    <div id="swapping-checkbox"></div>
+                    <div id="swapping">Swapping</div>
+
                 </div>
             </div>
         </div>
         <!-- Sorting Algorithm Description -->
-        <div class="descriptioncontainer">
+        <div class="descriptioncontainerwrapper">
             <!-- 4div for complete theory,time complexity,advantages,disadvantages -->
-            <div id="theory"></div>
-            <div id="time complexity"></div>
-            <div id="advantages"></div>
-            <div id="disadvantages"></div>
+            <div class="theory">
+
+                <h1 id="algorithmname">Selection Sort</h1>
+                <p id="algorithmtheory">
+                    In selection sort, the smallest value among the unsorted elements of the array is selected in
+                    every pass and inserted to its appropriate position into the array. It is also the simplest
+                    algorithm. It is an in-place comparison sorting algorithm. In this algorithm, the array is
+                    divided into two parts, first is sorted part, and another one is the unsorted part. Initially,
+                    the sorted part of the array is empty, and unsorted part is the given array. Sorted part is
+                    placed at the left, while the unsorted part is placed at the right.
+
+                    In selection sort, the first smallest element is selected from the unsorted array and placed at
+                    the first position. After that second smallest element is selected and placed in the second
+                    position. The process continues until the array is entirely sorted.
+                    Selection sort is generally used when -
+
+                    A small array is to be sorted
+                    Swapping cost doesn't matter
+                    It is compulsory to check all elements
+
+                </p>
+                <div class="algorithm">
+                    <div>
+                        <h4>Algorithm</h4>
+                    </div>
+                    <div>
+                        <h4>Time Complexity</h4>
+                    </div>
+                    <div>
+                        <pre id="sortingalgorithm">
+                    SELECTION SORT(arr, n)
+
+                    Step 1: Repeat Steps 2 and 3 for i = 0 to n-1
+                    Step 2: CALL SMALLEST(arr, i, n, pos)
+                    Step 3: SWAP arr[i] with arr[pos]
+                    [END OF LOOP]
+                    Step 4: EXIT
+
+                    SMALLEST (arr, i, n, pos)
+                    Step 1: [INITIALIZE] SET SMALL = arr[i]
+                    Step 2: [INITIALIZE] SET pos = i
+                    Step 3: Repeat for j = i+1 to n
+                    if (SMALL > arr[j])
+                    SET SMALL = arr[j]
+                    SET pos = j
+                    [END OF if]
+                    [END OF LOOP]
+                    Step 4: RETURN pos
+                    </pre>
+                    </div>
+
+                    <div class="timecomplexity">
+                        <pre>
+                        Best Case Complexity:O(n2)
+                        Average Case Complexity:O(n2)
+                        Worst Case Complexity:O(n2)
+                        </pre>
+                    </div>
+                </div>
+
+
+            </div>
         </div>
+    </div>
     </div>
     <div class="main-content"></div>
     <div class="footer"></div>
     </div>
+    <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
     <script src="mainscript.js"></script>
 </body>
 
