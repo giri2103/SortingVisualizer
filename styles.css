@@ -243,3 +243,7 @@ body {
 #algorithmsDropdown{
   cursor: pointer;
 }
+.designby{
+  font-family: 'Courier New', monospace;
+  padding-left: 20px;
+}
