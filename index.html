@@ -21,12 +21,12 @@
 
                 <div class="algoselect">
                     <label for="Algorithm">Selected Algorithm:</label>
-                    <select name="algorithmsDropdown" id="algorithmsDropdown">
-                        <option class="selectionSort">Selection Sort</option>
-                        <option class="bubbleSort">Bubble Sort</option>
-                        <option class="insertionSort">Insertion Sort</option>
-                        <option class="mergeSort">Merge Sort</option>
-                        <option class="quickSort">Quick Sort</option>
+                    <select name="algorithmDropdown" id="algorithmsDropdown">
+                        <option id="selectionSort" class="selectionSort" value="1">Selection Sort</option>
+                        <option id="bubbleSort" class="bubbleSort" value="2">Bubble Sort</option>
+                        <option id="insertionSort" class="insertionSort" value="3">Insertion Sort</option>
+                        <option id="mergeSort" class="mergeSort" value="4">Merge Sort</option>
+                        <option id="quickSort" class="quickSort" value="5">Quick Sort</option>
                     </select>
                 </div>
 
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="randomizeArray">
-                    <button type="button" id="randomizeArray">Shuffle Array</button>
+                    <button type="button" id="randomizeArrayBtn">New Array</button>
                 </div>
 
 
@@ -58,11 +58,17 @@
                 <!-- array will be inside this -->
                 <div class="arraycontainer">
                 </div>
+
             </div>
+
+
+
+
+
             <!-- functionality will be handled by this container -->
             <div class="controlBtnsContainer">
-                <div id="reset"><img id="reset-img" src="assets/resetbutton.svg" alt=""></div>
-                <div id="playbtn"><img id="play-img" src="assets/playbutton.svg" alt=""></div>
+                <div id="reset" onclick="refresh()"><img id="reset-img" src="assets/resetbutton.svg" alt=""></div>
+                <div id="playbtn" onclick="play()"><img id="play-img" src="assets/playbutton.svg" alt=""></div>
 
                 <div class="speedcontrol">
                     <!-- negative button -->
@@ -77,18 +83,19 @@
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
-
             </div>
+
+
+
+
+
             <!-- indicator -->
             <div class="indicators" id="indicators-container">
                 <div class="indicators" id="Unsorted">
                     <div id="unsorted-checkbox"></div>
                     <div id="Unsortedbox">Unsorted</div>
                 </div>
-                <div class="indicators" id="sorted">
-                    <div id="sorted-checkbox"></div>
-                    <div id="sortedbox">Sorted</div>
-                </div>
+
                 <div class="indicators" id="comparing">
                     <div id="comparing-checkbox"></div>
                     <div id="comparingbox">Comparing</div>
@@ -96,14 +103,27 @@
                 <div class="indicators" id="swapping">
                     <div id="swapping-checkbox"></div>
                     <div id="swapping">Swapping</div>
+                </div>
+                <div class="indicators" id="sorted">
+                    <div id="sorted-checkbox"></div>
+                    <div id="sortedbox">Sorted</div>
+                </div>
+                <div class="indicators" id="lessthanpivot">
+                    <div id="lessthanpivot-checkbox"></div>
+                    <div id="lessthanpivot">Less than Pivot</div>
+                </div>
 
+                <div class="indicators" id="pivot">
+                    <div id="pivot-checkbox"></div>
+                    <div id="pivot">Less than Pivot</div>
                 </div>
             </div>
         </div>
         <!-- Sorting Algorithm Description -->
         <div class="descriptioncontainerwrapper">
             <!-- 4div for complete theory,time complexity,advantages,disadvantages -->
-            <div class="theory">
+            <!------------------------------------------------------ Selection sort theory------------------------------------------------------>
+            <div class="theory" id="selectionsorttheory">
 
                 <h1 id="algorithmname">Selection Sort</h1>
                 <p id="algorithmtheory">
@@ -156,15 +176,346 @@
 
                     <div class="timecomplexity">
                         <pre>
-                        Best Case Complexity:O(n2)
-                        Average Case Complexity:O(n2)
-                        Worst Case Complexity:O(n2)
+
+                    Worst-case time complexity :	O(n<sup>2</sup>)
+
+                    Average time complexity    : 	O(n<sup>2</sup>)
+
+                    Best-case time complexity  :	O(n<sup>2</sup>)
+
+                    Worst-case space complexity:	O(1)
+
                         </pre>
                     </div>
                 </div>
-
-
             </div>
+            <!------------------------------------------------------ Selection sort theory ends------------------------------------------------------>
+
+
+            <!------------------------------------------------------ Bubble sort theory ------------------------------------------------------------->
+            <div class="theory" id="bubblesorttheory">
+
+                <h1 id="algorithmname">Bubble Sort</h1>
+                <p id="algorithmtheory">
+                    Bubble sort works on the repeatedly swapping of adjacent elements until they are not in the intended
+                    order. It is called bubble sort because the movement of array elements is just like the movement of
+                    air bubbles in the water. Bubbles in water rise up to the surface; similarly, the array elements in
+                    bubble sort move to the end in each iteration.
+
+                    Although it is simple to use, it is primarily used as an educational tool because the performance of
+                    bubble sort is poor in the real world. It is not suitable for large data sets. The average and
+                    worst-case complexity of Bubble sort is O(n2), where n is a number of items.
+
+                    Bubble short is majorly used where -
+
+                    complexity does not matter
+                    simple and shortcode is preferred
+
+                </p>
+                <div class="algorithm">
+                    <div>
+                        <h4>Algorithm</h4>
+                    </div>
+                    <div>
+                        <h4>Time Complexity</h4>
+                    </div>
+                    <div>
+                        <pre id="sortingalgorithm">
+                            void bubbleSort(int arr[], int n)
+                            {
+                                int i, j;
+                                bool swapped;
+                                for (i = 0; i < n - 1; i++) {
+                                    swapped = false;
+                                    for (j = 0; j < n - i - 1; j++) {
+                                        if (arr[j] > arr[j + 1]) {
+                                            swap(&arr[j], &arr[j + 1]);
+                                            swapped = true;
+                                        }
+                                    }
+  
+                                    // If no two elements were swapped by inner loop,
+                                    // then break
+                                    if (swapped == false)
+                                    break;
+                                }
+                            }
+                        </pre>
+                    </div>
+
+                    <div class="timecomplexity">
+                        <pre>
+
+                    Worst-case time complexity :	O(n<sup>2</sup>)
+
+                    Average time complexity    : 	O(n<sup>2</sup>)
+
+                    Best-case time complexity  :	O(n)
+
+                    Worst-case space complexity:	O(1)
+
+                            </pre>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------ Bubble sort theory ends------------------------------------------------------------->
+
+
+            <!------------------------------------------------------ insertion sort theory ------------------------------------------------------------->
+            <div class="theory" id="insertionsorttheory">
+
+                <h1 id="algorithmname">Insertion Sort</h1>
+                <p id="algorithmtheory">
+                    This is an in-place comparison-based sorting algorithm. Here, a sub-list is maintained which is
+                    always sorted. For example, the lower part of an array is maintained to be sorted. An element which
+                    is to be 'insert'ed in this sorted sub-list, has to find its appropriate place and then it has to be
+                    inserted there. Hence the name, insertion sort.
+
+                    The array is searched sequentially and unsorted items are moved and inserted into the sorted
+                    sub-list (in the same array). This algorithm is not suitable for large data sets as its average and
+                    worst case complexity are of Ο(n2), where n is the number of items.
+
+                </p>
+                <div class="algorithm">
+                    <div>
+                        <h4>Algorithm</h4>
+                    </div>
+                    <div>
+                        <h4>Time Complexity</h4>
+                    </div>
+                    <div>
+                        <pre id="sortingalgorithm">
+                            void insertionSort(int arr[], int n)
+                            {
+                                int i, key, j;
+                                for (i = 1; i < n; i++) {
+                                    key = arr[i];
+                                    j = i - 1;
+                             
+                                    // Move elements of arr[0..i-1],
+                                    // that are greater than key,
+                                    // to one position ahead of their
+                                    // current position
+                            
+                                    while (j >= 0 && arr[j] > key) {
+                                        arr[j + 1] = arr[j];
+                                        j = j - 1;
+                                    }
+                                    arr[j + 1] = key;
+                                }
+                            }
+                        </pre>
+                    </div>
+
+                    <div class="timecomplexity">
+                        <pre>
+
+                            Worst-case time complexity :	O(n<sup>2</sup>)
+
+                            Average time complexity    : 	O(n<sup>2</sup>)
+
+                            Best-case time complexity  :	O(n)
+
+                            Worst-case space complexity:	O(1)
+
+                            </pre>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------ insertion sort theory ends ------------------------------------------------------------->
+
+
+            <!------------------------------------------------------ merge sort theory ------------------------------------------------------------->
+            <div class="theory" id="mergesorttheory">
+
+                <h1 id="algorithmname">Merge Sort</h1>
+                <p id="algorithmtheory">
+                    Merge sort is a divide-and-conquer algorithm based on the idea of breaking down a list into several
+                    sub-lists until each sublist consists of a single element and merging those sublists in a manner
+                    that results into a sorted list.
+                <p>
+                    Idea:</p>
+                <ol>
+                    <li>Divide the unsorted list into N
+                        sublists, each containing
+                        element.</li>
+                    <li>Take adjacent pairs of two singleton lists and merge them to form a list of 2 elements.
+                        N will now convert into N/2
+                        lists of size 2.</li>
+                    <li>Repeat the process till a single sorted list of obtained.</li>
+                </ol>
+                While comparing two sublists for merging, the first element of both lists is taken into
+                consideration. While sorting in ascending order, the element that is of a lesser value becomes a new
+                element of the sorted list. This procedure is repeated until both the smaller sublists are empty and
+                the new combined sublist comprises all the elements of both the sublists.
+
+                </p>
+                <div class="algorithm">
+                    <div>
+                        <h4>Algorithm</h4>
+                    </div>
+                    <div>
+                        <h4>Time Complexity</h4>
+                    </div>
+                    <div>
+                        <pre id="sortingalgorithm">
+                            void merge(int A[ ] , int start, int mid, int end) {
+                                //stores the starting position of both parts in temporary variables.
+                               int p = start ,q = mid+1;
+                               
+                               int Arr[end-start+1] , k=0;
+                               
+                               for(int i = start ;i <= end ;i++) {
+                                   if(p > mid)      //checks if first part comes to an end or not .
+                                      Arr[ k++ ] = A[ q++] ;
+                               
+                                  else if ( q > end)   //checks if second part comes to an end or not
+                                      Arr[ k++ ] = A[ p++ ];
+                               
+                                  else if( A[ p ] < A[ q ])     //checks which part has smaller element.
+                                     Arr[ k++ ] = A[ p++ ];
+                               
+                                  else
+                                     Arr[ k++ ] = A[ q++];
+                                }
+                                 for (int p=0 ; p< k ;p ++) {
+                                  /* Now the real array has elements in sorted manner including both 
+                                       parts.*/
+                                    A[ start++ ] = Arr[ p ] ;                          
+                                 }
+                               }
+            </pre>
+                    </div>
+
+                    <div class="timecomplexity">
+                        <pre>
+
+                            Worst-case time complexity :	O(nlogn)
+
+                            Average time complexity    : 	O(nlogn)
+
+                            Best-case time complexity  :	O(nlogn)
+
+                            Worst-case space complexity:	O(n)
+
+                </pre>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------ merge sort theory ends------------------------------------------------------------->
+
+            <!------------------------------------------------------ quick sort theory ------------------------------------------------------------->
+            <div class="theory" id="quicksorttheory">
+
+                <h1 id="algorithmname">Quick Sort</h1>
+                <p id="algorithmtheory">
+                    Sorting is a way of arranging items in a systematic manner. Quicksort is the widely used sorting
+                    algorithm that makes n log n comparisons in average case for sorting an array of n elements. It is a
+                    faster and highly efficient sorting algorithm. This algorithm follows the divide and conquer
+                    approach. Divide and conquer is a technique of breaking down the algorithms into subproblems, then
+                    solving the subproblems, and combining the results back together to solve the original problem.
+
+                    Divide: In Divide, first pick a pivot element. After that, partition or rearrange the array into two
+                    sub-arrays such that each element in the left sub-array is less than or equal to the pivot element
+                    and each element in the right sub-array is larger than the pivot element.
+
+                    Conquer: Recursively, sort two subarrays with Quicksort.
+
+                    Combine: Combine the already sorted array.
+
+                    Quicksort picks an element as pivot, and then it partitions the given array around the picked pivot
+                    element. In quick sort, a large array is divided into two arrays in which one holds values that are
+                    smaller than the specified value (Pivot), and another array holds the values that are greater than
+                    the pivot.
+
+                    After that, left and right sub-arrays are also partitioned using the same approach. It will continue
+                    until the single element remains in the sub-array.
+                <p>
+                    <b>Choosing the pivot</b> : Picking a good pivot is necessary for the fast implementation of
+                    quicksort. However, it is typical to determine a good pivot. Some of the ways of choosing a
+                    pivot are as follows -
+                </p>
+                <ol>
+                    <li>Pivot can be random, i.e. select the random pivot from the given array.
+                    </li>
+                    <li>Pivot can either be the rightmost element of the leftmost element of the given array.
+                    </li>
+                    <li>Select median as the pivot element.
+                    </li>
+                </ol>
+
+                </p>
+                <div class="algorithm">
+                    <div>
+                        <h4>Algorithm</h4>
+                    </div>
+                    <div>
+                        <h4>Time Complexity</h4>
+                    </div>
+                    <div>
+                        <pre id="sortingalgorithm">
+                            int partition(int arr[], int low, int high)
+                            {
+                                // Choosing the pivot
+                                int pivot = arr[high];
+  
+                                // Index of smaller element and indicates
+                                // the right position of pivot found so far
+                                int i = (low - 1);
+  
+                                for (int j = low; j <= high - 1; j++) {
+  
+                                    // If current element is smaller than the pivot
+                                    if (arr[j] < pivot) {
+  
+                                        // Increment index of smaller element
+                                        i++;
+                                        swap(arr[i], arr[j]);
+                                    }
+                                }
+                                swap(arr[i + 1], arr[high]);
+                                return (i + 1);
+                            }
+  
+                            // The main function that implements QuickSort
+                            // arr[] --> Array to be sorted,
+                            // low --> Starting index,
+                            // high --> Ending index
+
+                            void quickSort(int arr[], int low, int high)
+                            {
+                                if (low < high) {
+  
+                                    // pi is partitioning index, arr[p]
+                                    // is now at right place
+                                    int pi = partition(arr, low, high);
+  
+                                    // Separately sort elements before
+                                    // partition and after partition
+                                    quickSort(arr, low, pi - 1);
+                                    quickSort(arr, pi + 1, high);
+                                }
+                            }
+            </pre>
+                    </div>
+
+                    <div class="timecomplexity">
+                        <pre>
+
+                            Worst-case time complexity :	O(n<sup>2</sup>)
+
+                            Average time complexity    : 	O(nlogn)
+
+                            Best-case time complexity  :	O(nlogn)
+
+                            Worst-case space complexity:	O(logn)
+
+                </pre>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------------------------------ quick sort theory ------------------------------------------------------------->
+
         </div>
     </div>
     </div>
