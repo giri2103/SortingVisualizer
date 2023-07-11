@@ -7,6 +7,6 @@ Advantage of this Web App :
 3.)You can randomize the Array again and again
 4.)It gives you the speed controller of sorting
 
-![logo]https://github.com/giri2103/SortingVisualizer/blob/main/thumbnail.png
+![logo](https://github.com/giri2103/SortingVisualizer/blob/main/thumbnail.png)
 
 Link - https://giri2103.github.io/SortingVisualizer/
